@@ -1,14 +1,14 @@
 {
   "name": "bb-plugin-noema",
-  "version": "0.2.1",
+  "version": "0.4.0",
   "type": "module",
   "engines": {
-    "bb": ">=0.39",
-    "bbPluginSdk": ">=0.4.8"
+    "bb": ">=0.50",
+    "bbPluginSdk": ">=0.6.157"
   },
   "bb": {
     "name": "Noema",
-    "description": "Bridges BB threads to your own Noema server over its Streamable HTTP MCP endpoint for durable memory.",
+    "description": "Durable memory for BB threads, backed by your own Noema cortex over its Streamable HTTP MCP endpoints.",
     "branding": {
       "icon": "Zap"
     },
@@ -18,12 +18,15 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@get-bb/plugin-sdk": "0.6.144",
-    "@types/better-sqlite3": "^7.6.12",
+    "@get-bb/plugin-sdk": "0.6.157",
     "@types/node": "^26.6.6",
-    "@types/react": "^19.3.0",
-    "better-sqlite3": "^13.2.0",
-    "hono": "^4.13.19",
     "typescript": "^7.0.2"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "bundle": "bb plugin build .",
+    "test": "node --test scripts/parse.test.mjs",
+    "probe": "node scripts/probe-noema.mjs",
+    "integration": "node scripts/factory.integration.mjs"
   }
 }
